@@ -1,0 +1,23 @@
+-----First Highest Salary-----
+SELECT MAX(SALARY)
+FROM EMP
+
+-----Second Highest Salary-----
+SELECT MAX(SALARY)
+FROM EMP
+WHERE SALARY NOT IN 
+(
+SELECT MAX(SALARY)
+FROM EMP
+)
+
+
+----Nth Highest Salary----
+SELECT e1.id,e1.salary
+FROM emp e1
+WHERE N-1 =
+(
+SELECT Count(Distinct(e2.Salary))
+FROM emp e2
+WHERE (e2.salary>e1.salary)
+)
